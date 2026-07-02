@@ -1,0 +1,13 @@
+# Normalize line endings: LF in the repo, native on checkout.
+* text=auto eol=lf
+*.png binary
+*.pdf binary
+*.docx binary
+*.whl binary
+*.gz binary
+
+# Keep generated/vendored files out of language stats and diffs where noisy.
+assets/* linguist-documentation
+bench/report.md linguist-documentation
+docs/* linguist-documentation
+*.svg -diff

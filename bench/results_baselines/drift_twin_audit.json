@@ -1,0 +1,11 @@
+{
+  "reactive_drift": 0.0,
+  "foveance_drift": 0.7,
+  "config_fields_that_differ": [
+    "drift"
+  ],
+  "only_difference_is_drift": true,
+  "same_allocator": "index_allocate",
+  "same_store": true,
+  "same_model": "shared"
+}

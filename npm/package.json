@@ -1,0 +1,38 @@
+{
+  "name": "foveance-proxy",
+  "version": "0.1.0",
+  "description": "Drop-in launcher for the Foveance anticipatory context-compression proxy (OpenAI- and Anthropic-compatible). Wraps the Python `foveance proxy` so npm/npx users can start it without a manual Python step.",
+  "bin": {
+    "foveance-proxy": "bin/foveance-proxy.js"
+  },
+  "keywords": [
+    "llm",
+    "openai",
+    "anthropic",
+    "proxy",
+    "context",
+    "compression",
+    "tokens",
+    "claude-code",
+    "codex",
+    "ollama",
+    "agents"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aimaghsoodi/foveance.git",
+    "directory": "npm"
+  },
+  "homepage": "https://github.com/aimaghsoodi/foveance#readme",
+  "bugs": {
+    "url": "https://github.com/aimaghsoodi/foveance/issues"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "files": [
+    "bin/",
+    "README.md"
+  ]
+}

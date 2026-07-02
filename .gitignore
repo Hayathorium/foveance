@@ -1,0 +1,28 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+# generated artifacts (reproducible); the REAL benchmark evidence in bench/results/,
+# bench/plots/, and bench/results_baselines/ is committed on purpose -- the docs and README
+# promise every number traces to these files.
+# The research manuscript and internal build specs are kept local, out of the public package.
+paper/
+prompts/
+CLAUDE.md
+bench/results_real/
+bench/results_mock/
+bench/results_*/
+!bench/results_baselines/
+bench/report_mock.md
+data/
+!data/longbench/sample.jsonl
+.cache/

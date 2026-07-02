@@ -1,0 +1,31 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "${{ matrix.python-version }}" }
+      - run: pip install -e ".[dev,bench,proxy]"
+      - name: lint
+        run: ruff check src tests bench
+      - name: type-check
+        run: mypy src
+      - name: tests + core coverage gate
+        run: |
+          pytest -q --cov=foveance.store --cov=foveance.predictor \
+            --cov=foveance.allocator --cov=foveance.controller \
+            --cov-report=term-missing --cov-fail-under=90
+      - name: offline benchmark smoke + analysis
+        run: |
+          python bench/run_bench.py --backend mock --models mock --suite synthetic \
+            --budgets 1000,2500 --tasks 4 --turns 30 --name-target false \
+            --fidelity-cost true --greedy-gap --ablations
+          python bench/analyze.py
+          python bench/plots.py
+      - name: cli smoke
+        run: foveance demo --budgets 1000,2500 --turns 18

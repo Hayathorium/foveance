@@ -1,0 +1,122 @@
+{
+  "models": [
+    "gemma2:2b",
+    "llama3.2:1b",
+    "qwen2.5:1.5b"
+  ],
+  "budgets": [
+    400,
+    700,
+    1200
+  ],
+  "budget_for_table": 1200,
+  "per_model": {
+    "gemma2:2b": {
+      "full_acc": 1.0,
+      "full_tokens": 10227.8,
+      "foveance_reached_full": true,
+      "foveance_iso_tokens": 3663.2,
+      "foveance_iso_budget": 400,
+      "foveance_iso_savings_pct_vs_full": 64.2,
+      "foveance_vs_reactive_delta_by_budget": {
+        "400": 0.0,
+        "700": -0.0667,
+        "1200": 0.0
+      },
+      "foveance_vs_reactive_max_delta": 0.0,
+      "foveance_vs_reactive_delta_ci_at_mid": [
+        -0.0667,
+        -0.2,
+        0.0
+      ],
+      "foveance_vs_reactive_wilcoxon_p_at_mid": 1.0,
+      "pareto_auc": {
+        "full": 1.0,
+        "recency": 0.6667,
+        "truncate": 0.0,
+        "uniform": 0.0,
+        "reactive_afm": 1.0,
+        "foveance": 0.9667,
+        "oracle": NaN
+      }
+    },
+    "llama3.2:1b": {
+      "full_acc": 1.0,
+      "full_tokens": 8290.2,
+      "foveance_reached_full": true,
+      "foveance_iso_tokens": 3107.8,
+      "foveance_iso_budget": 400,
+      "foveance_iso_savings_pct_vs_full": 62.5,
+      "foveance_vs_reactive_delta_by_budget": {
+        "400": 0.0,
+        "700": 0.0,
+        "1200": 0.0
+      },
+      "foveance_vs_reactive_max_delta": 0.0,
+      "foveance_vs_reactive_delta_ci_at_mid": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "foveance_vs_reactive_wilcoxon_p_at_mid": NaN,
+      "pareto_auc": {
+        "full": 1.0,
+        "recency": 0.6667,
+        "truncate": 0.142,
+        "uniform": 1.0,
+        "reactive_afm": 0.9833,
+        "foveance": 0.9833,
+        "oracle": NaN
+      }
+    },
+    "qwen2.5:1.5b": {
+      "full_acc": 1.0,
+      "full_tokens": 9930.8,
+      "foveance_reached_full": true,
+      "foveance_iso_tokens": 3622.0,
+      "foveance_iso_budget": 400,
+      "foveance_iso_savings_pct_vs_full": 63.5,
+      "foveance_vs_reactive_delta_by_budget": {
+        "400": 0.0,
+        "700": 0.0,
+        "1200": 0.0
+      },
+      "foveance_vs_reactive_max_delta": 0.0,
+      "foveance_vs_reactive_delta_ci_at_mid": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "foveance_vs_reactive_wilcoxon_p_at_mid": NaN,
+      "pareto_auc": {
+        "full": 1.0,
+        "recency": 0.6667,
+        "truncate": 0.0,
+        "uniform": 0.0,
+        "reactive_afm": 1.0,
+        "foveance": 1.0,
+        "oracle": NaN
+      }
+    }
+  },
+  "greedy_gap": {
+    "n": 800,
+    "mean_rel_gap": 0.01798,
+    "p95_rel_gap": 0.1272,
+    "max_rel_gap": 0.21923,
+    "mean_index_over_lp": 0.98991,
+    "min_index_over_lp": 0.92088
+  },
+  "drift_twin_audit": {
+    "reactive_drift": 0.0,
+    "foveance_drift": 0.7,
+    "config_fields_that_differ": [
+      "drift"
+    ],
+    "only_difference_is_drift": true,
+    "same_allocator": "index_allocate",
+    "same_store": true,
+    "same_model": "shared"
+  },
+  "source": "real"
+}

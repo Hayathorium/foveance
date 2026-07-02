@@ -1,0 +1,73 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "foveance"
+version = "0.1.0"
+description = "Anticipatory context allocation for long-horizon black-box LLM agents"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Abtin Maghsoodi" }]
+keywords = ["llm", "agents", "context", "compression", "rate-distortion", "kv-cache"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Typing :: Typed",
+]
+dependencies = []  # core is dependency-free and runs offline
+
+[project.optional-dependencies]
+ml     = ["sentence-transformers>=2.2", "numpy>=1.24", "torch>=2.0"]
+proxy  = ["fastapi>=0.110", "uvicorn>=0.29", "httpx>=0.27"]
+bench  = ["matplotlib>=3.7", "numpy>=1.24", "tiktoken>=0.6"]
+dev    = ["pytest>=8.0", "pytest-cov>=5.0", "ruff>=0.5", "mypy>=1.10", "hypothesis>=6.100"]
+# convenience: everything needed to run the proxy + benchmark in one shot (pip install foveance[all])
+all    = ["fastapi>=0.110", "uvicorn>=0.29", "httpx>=0.27",
+         "sentence-transformers>=2.2", "numpy>=1.24", "torch>=2.0",
+         "matplotlib>=3.7", "tiktoken>=0.6"]
+
+[project.scripts]
+foveance = "foveance.cli:main"   # provided by PROMPT_1 (cli.py)
+
+[project.urls]
+Homepage = "https://github.com/aimaghsoodi/foveance"
+Repository = "https://github.com/aimaghsoodi/foveance"
+Documentation = "https://github.com/aimaghsoodi/foveance/tree/main/docs"
+Changelog = "https://github.com/aimaghsoodi/foveance/blob/main/CHANGELOG.md"
+Issues = "https://github.com/aimaghsoodi/foveance/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/foveance"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# E731: short value/cost closures (vc, cost_fn) read more clearly inline than as nested defs.
+ignore = ["E731"]
+
+[tool.ruff.lint.per-file-ignores]
+# The seed test doubles as a no-pytest script runner (sys.path shim + __main__ harness).
+"tests/test_allocator.py" = ["E402", "E702", "E401"]
+# bench/ holds dense analysis utility scripts (matplotlib/csv one-liners), not library code.
+"bench/*.py" = ["E702", "E401", "E741", "F541"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
