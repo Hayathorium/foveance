@@ -69,5 +69,6 @@ ignore = ["E731"]
 "bench/*.py" = ["E702", "E401", "E741", "F541"]
 
 [tool.mypy]
-python_version = "3.10"
+# No python_version pin: mypy targets the running interpreter, so third-party stubs installed
+# for that interpreter (e.g. numpy's PEP 695 `type` statements on 3.12+) always parse.
 ignore_missing_imports = true

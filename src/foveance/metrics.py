@@ -84,13 +84,13 @@ def bootstrap_ci(
         import random
 
         prng = random.Random(seed)
-        means = []
+        boot: list[float] = []
         for _ in range(min(n_resamples, 2000)):
             sample = [xs[prng.randrange(len(xs))] for _ in xs]
-            means.append(sum(sample) / len(sample))
-        means.sort()
-        lo = means[int((alpha / 2) * len(means))]
-        hi = means[int((1 - alpha / 2) * len(means)) - 1]
+            boot.append(sum(sample) / len(sample))
+        boot.sort()
+        lo = boot[int((alpha / 2) * len(boot))]
+        hi = boot[int((1 - alpha / 2) * len(boot)) - 1]
         return (sum(xs) / len(xs), lo, hi)
 
 
