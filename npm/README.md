@@ -1,11 +1,16 @@
 # foveance-proxy (npm launcher)
 
-A tiny Node launcher for the [Foveance](https://github.com/aimaghsoodi/foveance) anticipatory
-context-compression proxy. It lets users of Node-based AI tools (Claude Code, OpenAI Codex,
-opencode, Crush, Continue, ...) start the proxy with one command, without a manual Python step.
+**Cut your LLM token bill by 60%+ without changing your code or your answers.**
 
-The proxy is **OpenAI- and Anthropic-compatible**, streams, and forwards your API key untouched, so
-any client that talks to either protocol works unchanged — you only point its base URL at the proxy.
+Your AI agent's chat history piles up — you pay for every old message on every new turn, and the
+model gets worse as important facts get buried. [Foveance](https://github.com/aimaghsoodi/foveance)
+automatically keeps what matters and trims the rest, so you get the same answers for a fraction of
+the tokens.
+
+This is a tiny Node launcher for the Foveance proxy, so users of Node-based AI tools (Claude Code,
+OpenAI Codex, opencode, Crush, Continue, ...) can start it with one command, without a manual
+Python step. The proxy is **OpenAI- and Anthropic-compatible**, streams, and forwards your API key
+untouched — you only point a client's base URL at it.
 
 ## Prerequisites
 

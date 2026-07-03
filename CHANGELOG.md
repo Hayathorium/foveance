@@ -4,6 +4,22 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-07-04
+### Added
+- `foveance.shrink(messages, budget=2000)` — the dead-simple one-liner: compress an
+  OpenAI-style messages list from Python with no proxy, no server, no config. Works on the
+  plain `pip install foveance` (no extras).
+
+### Changed
+- README rewritten to lead with the plain-English pitch and the two 30-second paths
+  (`foveance wrap` and `shrink`), with the proxy/theory details moved below. Logo and figures
+  switched to PNG with a `<picture>` fallback so they render on PyPI and npm.
+
+### Fixed
+- CI type-check step: dropped the `mypy` `python_version` pin (newer `numpy` stubs use PEP 695
+  syntax that the pinned parser rejected) and untangled a variable-shadowing type error in the
+  pure-Python bootstrap fallback.
+
 ## [0.1.0] - 2026-06-22
 ### Added
 - `foveance wrap` — run any CLI/agent through the proxy with one command: starts the proxy,

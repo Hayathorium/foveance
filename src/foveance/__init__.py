@@ -27,7 +27,29 @@ from .controller import Controller, RunResult, TurnRecord
 from .embedders import HashingEmbedder, Embedder, cosine
 from . import baselines, metrics
 
+
+def shrink(messages, budget=2000, drift=0.6):
+    """Compress an OpenAI-style ``messages`` list to about ``budget`` tokens; return a new list.
+
+    The one-liner way to use Foveance from Python — no proxy, no server, no config::
+
+        from foveance import shrink
+        smaller = shrink(messages, budget=2000)   # that's it
+
+    ``messages`` is the usual ``[{"role": ..., "content": ...}, ...]``. System messages and the
+    most recent turn are always kept verbatim; older turns are held at the fidelity the
+    anticipatory allocator picks under the budget. Nothing is sent anywhere — this runs locally
+    and only rewrites the list. Works with the plain ``pip install foveance`` (no extras).
+    """
+    from .proxy import FoveanceProxy
+
+    proxy = FoveanceProxy(budget=budget, drift=drift)
+    forwarded, _stats = proxy.prepare({"messages": list(messages)})
+    return forwarded["messages"]
+
+
 __all__ = [
+    "shrink",
     "MultiFidelityStore", "Item", "Fidelity", "default_renderer",
     "AnticipatoryPredictor", "PredictorConfig", "FutureRelevancePredictor", "PredictorContext",
     "index_allocate", "dp_allocate", "lp_bound",
@@ -35,4 +57,4 @@ __all__ = [
     "HashingEmbedder", "Embedder", "cosine",
     "baselines", "metrics",
 ]
-__version__ = "0.1.0"
+__version__ = "0.1.1"
