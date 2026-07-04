@@ -47,9 +47,30 @@ def shrink(messages, budget=2000, drift=0.6):
     forwarded, _stats = proxy.prepare({"messages": list(messages)})
     return forwarded["messages"]
 
+def shrink_anthropic(system, messages, budget=2000, drift=0.6):
+    """Compress an Anthropic-style ``system`` string and ``messages`` list.
+
+    The system prompt and the most recent turn are always kept verbatim; older
+    turns are compressed according to Foveance's anticipatory allocation policy.
+
+    Returns
+    -------
+    (new_system, new_messages)
+    """
+    from .proxy import FoveanceProxy
+
+    proxy = FoveanceProxy(budget=budget, drift=drift)
+    forwarded, _stats = proxy.prepare_anthropic(
+        {
+            "system": system,
+            "messages": list(messages),
+        }
+    )
+    return forwarded.get("system", ""), forwarded["messages"]
+
 
 __all__ = [
-    "shrink",
+    "shrink", "shrink_anthropic",
     "MultiFidelityStore", "Item", "Fidelity", "default_renderer",
     "AnticipatoryPredictor", "PredictorConfig", "FutureRelevancePredictor", "PredictorContext",
     "index_allocate", "dp_allocate", "lp_bound",
