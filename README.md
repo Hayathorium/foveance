@@ -17,7 +17,11 @@
 </p>
 
 <p align="center">
+  <a href="https://huggingface.co/spaces/AbteeXAILabs/foveance"><img alt="Live demo" src="https://img.shields.io/badge/%F0%9F%A4%97%20live%20demo-try%20in%20browser-yellow"></a>
   <a href="https://colab.research.google.com/github/aimaghsoodi/foveance/blob/main/examples/foveance_quickstart.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg"></a>
+</p>
+<p align="center">
+  <a href="https://huggingface.co/spaces/AbteeXAILabs/foveance"><b>Try the live demo</b></a>
   &nbsp;<b>·</b>&nbsp; <a href="#get-started-in-30-seconds">30-second start</a>
   &nbsp;<b>·</b>&nbsp; <a href="https://aimaghsoodi.github.io/foveance/">Docs</a>
 </p>
