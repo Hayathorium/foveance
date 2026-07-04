@@ -9,9 +9,17 @@
 
 <p align="center">
   <a href="https://pypi.org/project/foveance/"><img alt="PyPI" src="https://img.shields.io/pypi/v/foveance?color=blue"></a>
+  <a href="https://pypi.org/project/foveance/"><img alt="Downloads" src="https://img.shields.io/pypi/dm/foveance?color=blue"></a>
   <a href="https://github.com/aimaghsoodi/foveance/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/aimaghsoodi/foveance/actions/workflows/ci.yml/badge.svg"></a>
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache%202.0-green"></a>
   <a href="https://www.python.org/"><img alt="Python" src="https://img.shields.io/badge/python-3.10%E2%80%933.13-blue"></a>
+  <a href="https://aimaghsoodi.github.io/foveance/"><img alt="Docs" src="https://img.shields.io/badge/docs-online-6366f1"></a>
+</p>
+
+<p align="center">
+  <a href="https://colab.research.google.com/github/aimaghsoodi/foveance/blob/main/examples/foveance_quickstart.ipynb"><img alt="Open in Colab" src="https://colab.research.google.com/assets/colab-badge.svg"></a>
+  &nbsp;<b>·</b>&nbsp; <a href="#get-started-in-30-seconds">30-second start</a>
+  &nbsp;<b>·</b>&nbsp; <a href="https://aimaghsoodi.github.io/foveance/">Docs</a>
 </p>
 
 ---
