@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use Foveance, please cite the software and the accompanying paper."
+message: "If you use Foveance in your work, please cite the software."
 title: "Foveance: Anticipatory Context Allocation for Long-Horizon LLM Agents"
 abstract: >-
   Foveance is a black-box, reversible, anticipatory context-allocation layer for long-horizon
@@ -10,21 +10,13 @@ type: software
 authors:
   - family-names: Maghsoodi
     given-names: Abtin
-version: 0.1.1
+version: 0.1.2
 license: Apache-2.0
 repository-code: "https://github.com/aimaghsoodi/foveance"
+url: "https://pypi.org/project/foveance/"
 keywords:
   - large-language-models
   - agents
   - context-compression
   - rate-distortion
   - kv-cache
-preferred-citation:
-  type: article
-  title: >-
-    Foveance: A Predictive Rate-Distortion Theory of Anticipatory, Reversible Context
-    Compression for Black-Box LLM Agents
-  authors:
-    - family-names: Maghsoodi
-      given-names: Abtin
-  year: 2026

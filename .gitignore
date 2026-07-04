@@ -17,7 +17,6 @@ venv/
 # The research manuscript and internal build specs are kept local, out of the public package.
 paper/
 prompts/
-CLAUDE.md
 bench/results_real/
 bench/results_mock/
 bench/results_*/

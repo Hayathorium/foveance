@@ -21,7 +21,7 @@ before forwarding to the real model. Your existing API key is forwarded unchange
 changes.
 
 ```bash
-pip install -e ".[proxy]"
+pip install foveance
 # forward to OpenAI:
 foveance proxy --upstream https://api.openai.com/v1
 # or to Anthropic:
@@ -122,7 +122,7 @@ export ANTHROPIC_API_KEY=sk-ant-...
 ```
 
 **Node / npm world** — a thin launcher wraps the Python proxy so JS-tool users need no separate
-Python step (requires Python + `pip install foveance[proxy]` once):
+Python step (requires Python + `pip install foveance` once):
 ```bash
 npx foveance-proxy --upstream https://api.openai.com/v1     # see the npm/ directory
 ```

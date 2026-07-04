@@ -5,7 +5,7 @@
 // This lets users of Node-based agents (Claude Code, Codex, opencode, ...) start the Foveance
 // proxy with `npx foveance-proxy ...` without a manual Python invocation.
 //
-// Requirements: Python 3.10+ on PATH and `pip install "foveance[proxy]"` (one time).
+// Requirements: Python 3.10+ on PATH and `pip install foveance` (one time).
 
 const { spawnSync, spawn } = require('child_process');
 
@@ -24,7 +24,7 @@ const py = findPython();
 if (!py) {
   console.error(
     'foveance-proxy: Python 3 not found on PATH.\n' +
-    'Install Python 3.10+ and then:  pip install "foveance[proxy]"'
+    'Install Python 3.10+ and then:  pip install foveance'
   );
   process.exit(127);
 }
@@ -34,7 +34,7 @@ const check = spawnSync(py, ['-c', 'import foveance.proxy'], { encoding: 'utf8' 
 if (check.status !== 0) {
   console.error(
     'foveance-proxy: the Foveance Python package is not installed.\n' +
-    'Run:  pip install "foveance[proxy]"'
+    'Run:  pip install foveance'
   );
   process.exit(127);
 }

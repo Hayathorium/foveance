@@ -113,7 +113,7 @@ def cmd_proxy(args: argparse.Namespace) -> int:
     try:
         import uvicorn  # type: ignore
     except Exception:
-        print("foveance proxy needs the [proxy] extra: pip install 'foveance[proxy]'",
+        print("foveance proxy needs uvicorn: pip install foveance",
               file=sys.stderr)
         return 2
 
@@ -152,7 +152,7 @@ def cmd_wrap(args: argparse.Namespace) -> int:
     try:
         import uvicorn  # type: ignore
     except Exception:
-        print("foveance wrap needs the [proxy] extra: pip install 'foveance[proxy]'",
+        print("foveance wrap needs uvicorn: pip install foveance",
               file=sys.stderr)
         return 2
 

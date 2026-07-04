@@ -16,7 +16,7 @@
 
 ---
 
-## What is this? (plain English)
+## What is this?
 
 When you chat with an AI agent for a while, the conversation history keeps piling up. You pay
 for **every** old message on **every** new turn, and past a point the model actually gets
@@ -38,7 +38,7 @@ single line of your app.
 One command. It runs your tool exactly as before, just cheaper, and prints how much you saved:
 
 ```bash
-pip install "foveance[proxy]"
+pip install foveance
 foveance wrap claude          # or:  foveance wrap -- codex "fix the tests"
 ```
 
@@ -99,10 +99,11 @@ model; the shortcuts drop the fact. Every number traces to a CSV in
 <summary><b>Install options</b> (click to expand)</summary>
 
 ```bash
-pip install foveance             # core: the shrink() function + demo, dependency-free, offline
-pip install "foveance[proxy]"    # + the drop-in proxy and `foveance wrap`
-pip install "foveance[all]"      # everything: proxy + ML embedder + benchmark tools
+pip install foveance          # everything you normally need: shrink(), foveance wrap, the proxy, and the demo
+pip install "foveance[all]"   # the above plus the ML embedder and benchmark tooling (numpy, torch, matplotlib, …)
 ```
+The allocator/predictor core imports no heavy libraries; the base install adds only the small
+web-server packages that power `foveance wrap` and the proxy.
 </details>
 
 ---
@@ -202,6 +203,19 @@ rec = ctrl.step("recall api_key", turn=0)
 print(rec.answer, rec.input_tokens, rec.peak_tokens)
 ```
 Swap `policy="reactive_afm"` (the AFM baseline), `"recency"`, `"full"`, or `"oracle"` to compare.
+
+**The public API at a glance** (`from foveance import ...`):
+
+| Name | What it is |
+|---|---|
+| `shrink(messages, budget=2000)` | the one-liner — compress a messages list, no setup |
+| `Controller`, `Item` | the full stepping loop (add items, `step(query, turn)`) |
+| `index_allocate`, `dp_allocate`, `lp_bound` | the index policy, exact DP optimum, and LP bound (`index ≤ OPT ≤ LP`) |
+| `AnticipatoryPredictor`, `PredictorConfig` | the anticipatory future-relevance scorer (`drift` knob) |
+| `MultiFidelityStore`, `Fidelity` | the reversible multi-fidelity store |
+| `HashingEmbedder`, `cosine` | the offline embedder + similarity |
+| `baselines`, `metrics` | policy arms (`full`/`recency`/`reactive_afm`/`oracle`/…) and scoring helpers |
+| `foveance.proxy.FoveanceProxy` | the proxy core, if you want to embed it |
 
 ## Honest positioning
 As of mid-2026 this space is crowded. **Per-message multi-fidelity tiering under a token budget

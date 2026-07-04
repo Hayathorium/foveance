@@ -15,10 +15,10 @@ untouched — you only point a client's base URL at it.
 ## Prerequisites
 
 - Node.js >= 16
-- Python >= 3.10 with the proxy extra installed once:
+- Python >= 3.10 with Foveance installed once:
 
 ```bash
-pip install "foveance[proxy]"
+pip install foveance
 ```
 
 ## Use

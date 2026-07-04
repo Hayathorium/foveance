@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2026-07-04
+### Changed
+- `pip install foveance` now includes everything a normal user needs — the `shrink()` one-liner,
+  `foveance wrap`/`proxy`, and the demo. The proxy web-server packages moved from the `[proxy]`
+  extra into the base dependencies; `[proxy]` is kept as a no-op alias for back-compat. Only the
+  ML embedder and benchmark tooling remain behind `[all]`/`[ml]`/`[bench]`.
+- README/docs simplified: install is just `pip install foveance` everywhere, and the full public
+  API (including `shrink`) is listed in one table.
+- `CITATION.cff` trimmed to a software-only citation (dropped the premature reference to the
+  unpublished manuscript).
+
 ## [0.1.1] - 2026-07-04
 ### Added
 - `foveance.shrink(messages, budget=2000)` — the dead-simple one-liner: compress an
