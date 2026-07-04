@@ -4,7 +4,7 @@ repo_url: https://github.com/aimaghsoodi/foveance
 theme:
   name: readthedocs
 nav:
-  - Home: ../README.md
+  - Home: index.md
   - Usage: usage.md
   - Architecture: architecture.md
   - Theory: theory.md
