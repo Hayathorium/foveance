@@ -75,6 +75,8 @@ smaller = shrink(messages, budget=2000)   # messages = your OpenAI-style list
 `shrink` keeps your system prompt and your latest message exactly as-is and intelligently
 compresses the older turns. That's all you need to start.
 
+<p align="center"><img alt="foveance.shrink() collapses older turns and keeps the system prompt + last turn; input tokens drop 53%" src="https://raw.githubusercontent.com/aimaghsoodi/foveance/main/assets/shrink-demo.gif" width="660"></p>
+
 ### Option C — try it right now, no API key, no GPU
 ```bash
 pip install foveance
