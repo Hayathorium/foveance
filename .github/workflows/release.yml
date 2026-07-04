@@ -2,6 +2,7 @@ name: release
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch: {}   # allow manual runs (e.g. to re-verify the pipeline)
 
 jobs:
   build:
@@ -17,14 +18,17 @@ jobs:
         with: { name: dist, path: dist/* }
 
   publish:
-    # Publishes to PyPI via Trusted Publishing (OIDC, no stored secrets).
-    # Configure the project on PyPI first, then this runs on every v* tag.
+    # Publishes to PyPI using an API token stored in the PYPI_API_TOKEN secret.
+    # `skip-existing` makes re-runs safe: a version already on PyPI is skipped, not an error.
+    # To switch to token-free Trusted Publishing later, configure a publisher on PyPI and replace
+    # the `with:` block below with `permissions: {id-token: write}` (see docs/ SUBMISSION notes).
     needs: build
     runs-on: ubuntu-latest
     environment: pypi
-    permissions:
-      id-token: write
     steps:
       - uses: actions/download-artifact@v4
         with: { name: dist, path: dist }
       - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          skip-existing: true
