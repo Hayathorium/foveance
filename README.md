@@ -139,7 +139,6 @@ forwarding upstream.
 You can run the Foveance proxy with zero Python setup using Docker:
 ```bash
 docker run -p 8799:8799 ghcr.io/aimaghsoodi/foveance --upstream https://api.openai.com/v1
-
 ```
 
 ### Run with Python / CLI
